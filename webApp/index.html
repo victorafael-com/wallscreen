@@ -1,17 +1,34 @@
 <html>
 <header>
-	<link rel="stylesheet" href="style/main.css" />
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript" src="scripts/classes.js"></script>
+	<script type="text/javascript" src="scripts/recognition.js"></script>
 	<script type="text/javascript" src="scripts/video.js"></script>
+	<link rel="stylesheet" href="style/main.css" />
 </header>
 
 <body>
-		<div id="page">
-				<canvas id="wallScreenCanvas">
-				</canvas>
-				<video autoplay id="videoElement">
-     
-    			</video>
+	<canvas id="wallScreenCanvas" class="fullScreen">
+	</canvas>
+	<div id="recalibrate" class="fullScreen hidden">
+		<div id="recalibrate-0" class="recalibrate-corner"></div>
+		<div id="recalibrate-1" class="recalibrate-corner"></div>
+		<div id="recalibrate-2" class="recalibrate-corner"></div>
+		<div id="recalibrate-3" class="recalibrate-corner"></div>
+		<div id="recalibrate-content">
+			<h2>Calibrating</h2>
+			<p>Please face the camera to the projection.</p>
+			<p>Click on the <span style="color:#FF0">yellow</span> square</p>
+			<video autoplay id="videoElement"></video>
 		</div>
+	</div>
+	<div id="debug">
+		<div id="debug-l1"></div>
+		<div id="debug-l2"></div>
+		<div id="debug-l3"></div>
+		<div id="debug-l4"></div>
+	</div>
+	<canvas id="recogCanvas" class="hidden"></canvas>
 </body>
 
 </html>
