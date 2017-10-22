@@ -57,6 +57,8 @@ class Rect{
 }
 class Debug{
 	static Show(txt, line){
-		$("#debug-l"+(line%5)).text(txt);
+		if(IsDebugging){
+			$("#debug-l"+(line%5)).text(txt);
+		}
 	}
 }
