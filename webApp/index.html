@@ -1,11 +1,13 @@
 <html>
-<header>
+<head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<script type="text/javascript" src="scripts/classes.js"></script>
 	<script type="text/javascript" src="scripts/recognition.js"></script>
 	<script type="text/javascript" src="scripts/video.js"></script>
+	<script type="text/javascript" src="scripts/screen.js"></script>
+	<script type="text/javascript" src="scripts/data.js"></script> 
 	<link rel="stylesheet" href="style/main.css" />
-</header>
+</head>
 
 <body>
 	<canvas id="wallScreenCanvas" class="fullScreen">
@@ -23,12 +25,14 @@
 		</div>
 	</div>
 	<div id="debug">
+		<div id="debug-l0"></div>
 		<div id="debug-l1"></div>
 		<div id="debug-l2"></div>
 		<div id="debug-l3"></div>
 		<div id="debug-l4"></div>
 	</div>
 	<canvas id="recogCanvas" class="hidden"></canvas>
+	<div id="interactableRoot"></div>
 </body>
 
 </html>

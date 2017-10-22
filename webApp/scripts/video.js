@@ -6,7 +6,7 @@ var recogContext;
 
 // video
 var video;
-var fps = 30;
+var fps = 15;
 var needVideo = false;
 
 // recognition
@@ -55,7 +55,7 @@ function Update(){
 	if(needVideo)
 		UpdateVideoDisplayCanvas();
 	
-	UpdateRecognition();
+	UpdateRecognition(); //recognition.js
 	
 	setTimeout(Update, 1 / fps);
 }

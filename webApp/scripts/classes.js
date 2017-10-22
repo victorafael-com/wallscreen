@@ -1,3 +1,5 @@
+
+var IsDebugging = false;
 var RecogState = {
 	"Calibrating":1,
 	"Recognizing":2
@@ -32,28 +34,29 @@ class Vector2 {
 		);
 	}
 }
-/*
-function Vector2(_x,_y){
-	this.x = _x;
-	this.y = _y;
-}
-Vector2.prototype.Distance = function(v1,v2){
-	return Math.sqrt((v2.x - v1.x)^2 + (v2.y - v1.y)^2);
-}
-Vector2.prototype.Lerp = function(v1,v2,l){
-	return new Vector2(
-		Lerp(v1.x,v2.x,l),
-		Lerp(v1.y,v2.y,l)
-	);
-}*/
 
 function Lerp(a,b,l){
 	return a + (b - a) * l;
 }
 
-function Rect(_topLeft, _topRight, _bottomRight, _bottomLeft){
-	this.topLeft = _topLeft;
-	this.topRight = _topRight;
-	this.bottomLeft = _bottomLeft;
-	this.bottomRight = _bottomRight;
+class Rect{
+	constructor(_topLeft, _topRight, _bottomRight, _bottomLeft){
+		this.topLeft = _topLeft;
+		this.topRight = _topRight;
+		this.bottomLeft = _bottomLeft;
+		this.bottomRight = _bottomRight;
+	}
+	CalculateBoundaries(){
+		this.min = new Vector2(
+			Math.min(this.topLeft.x, this.topRight.x, this.bottomLeft.x, this.bottomRight.x),
+			Math.min(this.topLeft.y, this.topRight.y, this.bottomLeft.y, this.bottomRight.y));
+		this.size = new Vector2(
+			Math.max(this.topLeft.x, this.topRight.x, this.bottomLeft.x, this.bottomRight.x) - this.min.x,
+			Math.max(this.topLeft.y, this.topRight.y, this.bottomLeft.y, this.bottomRight.y) - this.min.y);
+	}
+}
+class Debug{
+	static Show(txt, line){
+		$("#debug-l"+(line%5)).text(txt);
+	}
 }
