@@ -23,7 +23,9 @@ $(document).ready(function(){
 	if (navigator.getUserMedia) {       
 		// get webcam feed if available
 		navigator.getUserMedia({video: true}, handleVideo, videoError);
-	} 
+	}
+	
+	LoadScreen("data/home.json");//screen.js
 });
  
 function handleVideo(stream) {

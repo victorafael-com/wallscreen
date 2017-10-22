@@ -37,27 +37,16 @@ function RecogStart(){
 			$("#recalibrate").hide();
 			if(IsDebugging){
 				$("#recogCanvas").show();
-				
-				new Interactable({
-					x: 25,
-					y: 25,
-					width:50,
-					height:25,
-					bg: "#F3CA82",
-				});
-				new Interactable({
-					x: 45,
-					y: 35,
-					width:30,
-					height:25,
-					bg: "#23CAD2",
-				});
 			}
 			break;
 		}
 	});
 	$("#recalibrate-0").show();
 	$("#recalibrate").show();
+	
+	if(IsDebugging){
+		$("#interactableRoot").css({"opacity":"0.5"});
+	}
 };
 
 function UpdateRecognition(){

@@ -1,0 +1,46 @@
+[
+	{
+		"x": 0,
+		"y": 0,
+		"width":50,
+		"height":50,
+		"bg": "#ff8686",
+		"content": "Higiene",
+		"icon":"cleaning.png",
+		"type":"link",
+		"value":"data/cleaning.json"
+	},
+	{
+		"x": 50,
+		"y": 0,
+		"width":50,
+		"height":50,
+		"bg": "#b086ff",
+		"content": "Frases Comuns",
+		"icon":"phrases.png",
+		"type":"link",
+		"value":"data/phrases.json"
+	},
+	{
+		"x": 0,
+		"y": 50,
+		"width":50,
+		"height":50,
+		"bg": "#8cff86",
+		"content": "Saúde",
+		"icon":"health.png",
+		"type":"link",
+		"value":"data/health.json"
+	},
+	{
+		"x": 50,
+		"y": 50,
+		"width":50,
+		"height":50,
+		"bg": "#F3CA82",
+		"content": "Digitar",
+		"icon":"keyboard.png",
+		"type":"action",
+		"value":"data/keyboard.json"
+	}
+]

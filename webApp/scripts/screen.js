@@ -10,6 +10,10 @@ class Interactable {
 		this.CreateInteractable(data);
 	}
 	
+	static Create(data){
+		new Interactable(data);
+	}
+	
 	CreateInteractable(data){
 		var index = interactableMap.length;
 	
@@ -24,23 +28,33 @@ class Interactable {
 		root.attr("interactable-index", index);
 		
 		root.append($("<div />").addClass("interactable-bg"));
+		
+		var labelDiv = $("<div />").addClass("interactable-content");
+		if(data.icon.length > 0){
+			labelDiv.append($("<img />").attr("src","icons/"+data.icon));
+		}
+		labelDiv.append($("<div />").text(data.content));
+		root.append(labelDiv);
+		
 		interactableMap.push(this);
 		this.element = root;
 		this.canInteract = true;
 	}
 	
 	PointerIn(){
-		console.log("Pointer In");
 		this.canInteract = true;
 		this.element.addClass("hovered");
 	}
 	PointerOut(){
-		console.log("Pointer Out");
 		this.element.removeClass("hovered");
 	}
 	Interact(){
 		this.canInteract = false;
-		console.log("Interact");
+		switch(this.data.type){
+			case "link":
+			LoadScreen(this.data.value);
+			break;
+		}
 	}
 }
 
@@ -51,7 +65,6 @@ class Interactable {
 function CheckCurrentInteractable(x,y){
 	var el = document.elementFromPoint(x,y);
 	if(el == null){
-		console.log("null element on check");
 		if(currentInteractable != null){
 			currentInteractable.PointerOut();
 			currentInteractable = null;
@@ -93,15 +106,22 @@ function CheckCurrentInteractable(x,y){
 	}
 }
 
+
+
+function LoadScreen(jsonURL){
+	ClearInteractables();
+	$.getJSON(jsonURL, function(data){
+		for(var i = 0; i < data.length; i++){
+			Interactable.Create(data[i]);
+		}
+	});
+}
+
 function ClearInteractables(){
 	$("#interactableRoot").html("");
 	interactableMap = [];
 	currentInteractable = null;
 }
-
-
-
-
 
 //Create interactable animation css
 var style=document.createElement('style');

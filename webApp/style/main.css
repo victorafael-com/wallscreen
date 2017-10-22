@@ -4,6 +4,7 @@
 }
 body{
 	background:#FFCC00;
+	font-family:Arial, Helvetica;
 }
 #page{
 	width:100%;
@@ -25,6 +26,7 @@ body{
 
 #recalibrate{
 	background:rgba(0,0,0,0.5);
+	z-index:100;
 }
 
 @keyframes corner{
@@ -97,5 +99,14 @@ body{
 		background:rgba(0,0,0,0.3);
 	}
 	.interactable.hovered .interactable-bg{
-		animation: interactBg 3s ease-in-out infinite;
+		animation: interactBg 3s ease-in infinite;
+	}
+	.interactable-content{
+		text-align:center;
+		font-size:2em;
+		position:absolute;
+		top:50%;
+		transform:translateY(-50%);
+		width:80%;
+		left:10%;
 	}
