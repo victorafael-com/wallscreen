@@ -5,7 +5,7 @@
 	left:0;
 	height:100%;
 }
-#rightpanel{
+#rightpanel, #filePanel{
 	width:20%;
 	position:absolute;
 	top:0;
@@ -13,6 +13,9 @@
 	height:100%;
 	background:#EEE;
 	overflow:hidden;
+}
+#filePanel{
+	background:#DDD;
 }
 .contentLine{
 	width:100%;
@@ -39,4 +42,8 @@ span{
 #formRoot{
 	overflow:scroll;
 	height:95%;
+}
+textarea{
+	width:90%;
+	height:90%;
 }

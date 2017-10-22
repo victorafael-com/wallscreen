@@ -3,7 +3,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="style/main.css" />
 	<link rel="stylesheet" href="style/editor.css" />
-	
+	<meta charset="UTF-8">
 	<script src="scripts/editor.js">
 	</script>
 </head>
@@ -21,6 +21,9 @@
 	</div>
 	<div id="rightpanel">
 		<div style="text-align:right">
+			<input type="button" id="open" value="open" />
+			<input type="button" id="save" value="save" />
+			<span> &nbsp; </span>
 			<input type="button" id="new" value="new" />
 		</div>
 		<div id="formRoot">
@@ -73,6 +76,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div id="filePanel">
+		<textarea id="textarea"></textarea>
+		<input type="button" value="load" id="load" />
+		<span> </span><input type="button" value="close" id="close" />
 	</div>
 </body>
 
