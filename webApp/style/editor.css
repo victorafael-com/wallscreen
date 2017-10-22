@@ -1,0 +1,42 @@
+#interactableRoot{
+	width:80%;
+	position:absolute;
+	top:0;
+	left:0;
+	height:100%;
+}
+#rightpanel{
+	width:20%;
+	position:absolute;
+	top:0;
+	left:80%;
+	height:100%;
+	background:#EEE;
+	overflow:hidden;
+}
+.contentLine{
+	width:100%;
+	position:absolute;
+	left:0;
+	border:1px dashed #FAFAFA;
+}
+.interactableForm{
+	padding: 10px;
+    font-size: 10px;
+}
+.interactable span{
+	position:absolute;
+	top:5px; left:5px;
+	font-size:12px;
+}
+span{
+	width:60px;
+	display:inline-block;
+}
+.number{
+	width:35px;
+}
+#formRoot{
+	overflow:scroll;
+	height:95%;
+}

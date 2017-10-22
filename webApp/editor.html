@@ -1,0 +1,79 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="style/main.css" />
+	<link rel="stylesheet" href="style/editor.css" />
+	
+	<script src="scripts/editor.js">
+	</script>
+</head>
+
+<body>
+	<div id="interactableRoot">
+		<div class="interactable">
+			<div class="interactable-content">
+				<img src="icons/cleaning.png">
+				<div class="txt"></div>
+			</div>
+			<span></span>
+		</div>
+	</div>
+	</div>
+	<div id="rightpanel">
+		<div style="text-align:right">
+			<input type="button" id="new" value="new" />
+		</div>
+		<div id="formRoot">
+			<div class="interactableForm">
+				<div class="form">
+					<div>
+						<span>Position:</span>
+						x: <input type="number" class="x number" value="10" />%
+						y: <input type="number" class="y number" value="10" />%
+					</div>
+					<div>
+						<span>Size:</span>
+						w: <input type="number" class="width number" value="30" />%
+						h: <input type="number" class="height number" value="30" />%
+					</div>
+					<div>
+						<span>Color:</span>
+						<input type="color" class="color" value="#BBA384" />
+					</div>
+					<div>
+						<span>Icon:</span>
+						<select class="icon">
+							
+						</select>
+					</div>
+					<div>
+						<span>Text:</span>
+						<input type="text" class="txt" value="New item" />
+					</div>
+					<div>
+						<span>Type:</span>
+						<select class="type">
+							<option value="text">Speak Text</option>
+							<option value="link">Change screen</option>
+							<option value="special">Custom event</option>
+						</select>
+					</div>
+					<div class="dataLine">
+						<span>Data:</span>
+						<input type="text" class="data" value="" />
+					</div>
+					<div>
+						<input type="button" value="duplicate" class="duplicate" />
+						<span> &nbsp; </span>
+						<input type="button" value="x" class="delete" />
+					</div>
+				</div>
+				<div class="minify" style="display:none">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
