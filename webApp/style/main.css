@@ -3,7 +3,7 @@
 	padding:0;
 }
 body{
-	background:#FFCC00;
+	background:#333;
 	font-family:Arial, Helvetica;
 }
 #page{
@@ -101,9 +101,12 @@ body{
 	.interactable.hovered .interactable-bg{
 		animation: interactBg 3s ease-in infinite;
 	}
+	.interactable-content img{
+		max-width:25%;
+	}
 	.interactable-content{
 		text-align:center;
-		font-size:2em;
+		font-size:3.2em;
 		position:absolute;
 		top:50%;
 		transform:translateY(-50%);

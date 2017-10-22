@@ -54,12 +54,12 @@ class Interactable {
 			case "link":
 			LoadScreen(this.data.value);
 			break;
+			case "text":
+			Speak(this.data.content); //voice.js
+			break;
 		}
 	}
 }
-
-
-
 
 
 function CheckCurrentInteractable(x,y){

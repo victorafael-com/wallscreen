@@ -1,5 +1,5 @@
 
-var IsDebugging = true;
+var IsDebugging = false;
 var RecogState = {
 	"Calibrating":1,
 	"Recognizing":2
