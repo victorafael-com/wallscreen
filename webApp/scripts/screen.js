@@ -1,6 +1,8 @@
 var interactableMap = [];
 var currentInteractable = null;
 var currentInteractableTime;
+var currentScreen = "";
+var lastScreen = "";
 
 var interactionTime = 3;
 
@@ -52,7 +54,11 @@ class Interactable {
 		this.canInteract = false;
 		switch(this.data.type){
 			case "link":
-			LoadScreen(this.data.value);
+			if(this.data.value == "-back"){
+				LoadScreen(lastScreen);
+			}else{
+				LoadScreen(this.data.value);
+			}
 			break;
 			case "text":
 			Speak(this.data.content); //voice.js
@@ -109,6 +115,8 @@ function CheckCurrentInteractable(x,y){
 
 
 function LoadScreen(jsonURL){
+	lastScreen = currentScreen;
+	currentScreen = jsonURL;
 	ClearInteractables();
 	$.getJSON(jsonURL, function(data){
 		for(var i = 0; i < data.length; i++){

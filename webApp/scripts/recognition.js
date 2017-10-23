@@ -3,6 +3,8 @@ var recogRect = new Rect();
 var calibratingPhase = 0;
 
 var laserPointMinRed = 245;
+var laserPointLowLightMinRed = 175;
+var lowLightAverage = 70;
 
 function RecogStart(){
 	$("#videoElement").click(function(c){
@@ -61,6 +63,8 @@ function UpdateRecognition(){
 	var bestColor = new Color(0,0,0);
 	var bestColorPos = new Vector2(-1,-1);
 	
+	var average = 0;
+	
 	for(var x = 0; x < iterations; x++){
 		var top = Vector2.Lerp(recogRect.topLeft, recogRect.topRight, x / iterations);
 		var bottom = Vector2.Lerp(recogRect.bottomLeft, recogRect.bottomRight, x / iterations);
@@ -74,19 +78,32 @@ function UpdateRecognition(){
 				bestColorPos.x = x;
 				bestColorPos.y = y;
 			}
-			
+			average += pointColor.r;
 			if(IsDebugging){
 				SetPixel(Math.round(point.x), Math.round(point.y), new Color(255 * x/iterations, 255 * y/iterations,0));
 			}
 		}
 	}
+	
+	average /= (iterations * iterations);
 	if(IsDebugging){
 		recogContext.putImageData(recogData,0,0);
-		Debug.Show(bestColor.r + " -- " + Math.round(bestColorPos.x)+", "+Math.round(bestColorPos.y),0);
+		Debug.Show(bestColor.r + " (avg: "+average+")-- " + Math.round(bestColorPos.x)+", "+Math.round(bestColorPos.y),0);
+		
+	}
+	if(debugNextFrame){
+		var txt = bestColor.r + " (avg: "+average+")-- " + Math.round(bestColorPos.x)+", "+Math.round(bestColorPos.y);
+		console.log(txt);
+		debugNextFrame = false;
+		$("<div />").addClass("debug").hide().append(
+			$("<span />").text(txt)
+		).append(
+			$("<img />").attr("src",recogCanvas.toDataURL())
+		).appendTo("body");
 	}
 	var x = -1;
 	var y = -1;
-	if(bestColor.r > laserPointMinRed){
+	if(bestColor.r > laserPointMinRed || (average < lowLightAverage && bestColor.r > laserPointLowLightMinRed)){
 		x = bestColorPos.x * window.innerWidth/iterations;
 		y = bestColorPos.y * window.innerHeight/iterations;
 	}

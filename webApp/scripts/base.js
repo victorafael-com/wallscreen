@@ -8,6 +8,7 @@ var recogContext;
 var video;
 var fps = 15;
 var needVideo = false;
+var debugNextFrame = false;
 
 // recognition
 var recogData;
@@ -25,9 +26,13 @@ $(document).ready(function(){
 		navigator.getUserMedia({video: true}, handleVideo, videoError);
 	}
 	
+	 document.body.onkeyup = function(e){
+		if(e.keyCode == 32){
+			debugNextFrame = true;
+		}
+	}
 	LoadScreen("data/home.json");//screen.js
 });
- 
 function handleVideo(stream) {
     // if found attach feed to video element
     video.src = window.URL.createObjectURL(stream);
