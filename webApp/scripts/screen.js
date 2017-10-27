@@ -63,6 +63,23 @@ class Interactable {
 			case "text":
 			Speak(this.data.content); //voice.js
 			break;
+			case "special":
+			if(this.data.value.startsWith("char")){
+				$("#textField").text($("#textField").text()+this.data.value.substr(5))
+			}else if(this.data.value == "backspace"){
+				var txt = $("#textField").text();
+				$("#textField").text(txt.substr(0,txt.length - 1));
+			}else if(this.data.value == "speak"){
+				var txt = $("#textField").text();
+				if(txt.trim().length > 0){
+					Speak(txt);
+					$("#textField").text("");
+				}
+			}
+			break;
+			default:
+			console.logerror("Invalid data type: "+this.data.type);
+			break;
 		}
 	}
 }
@@ -118,6 +135,11 @@ function LoadScreen(jsonURL){
 	lastScreen = currentScreen;
 	currentScreen = jsonURL;
 	ClearInteractables();
+	if(jsonURL == "data/keyboard.json"){
+		$("#textField").show();
+	}else{
+		$("#textField").hide();
+	}
 	$.getJSON(jsonURL, function(data){
 		for(var i = 0; i < data.length; i++){
 			Interactable.Create(data[i]);
